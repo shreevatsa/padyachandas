@@ -1,0 +1,41 @@
+* What
+
+Version 2 (a rewrite in Javascript) of the Sanskrit metres code running sanskritmetres.appspot.com
+
+Is a version 2, so will probably be a victim of "second system syndrome".
+
+Want to write it in Javascript, so that it can run "anywhere" (either user's browser, or on a server with NodeJS).
+
+Renamed padyachandas ("chandas" was not available) to potentially cover other Indian languages, let's see.
+
+Will try to be more modular this time.
+
+Possible components / modules:
+
+- Detect input scheme
+- Transliterate input (from detected input scheme to some internal representation)
+- Scan input into laghus and gurus: 1s and 2s?
+- Identify potential metres from the laghu-guru pattern.
+- Display given input verse (or transliterated input?) in any given metre.
+
+State / data:
+
+- For the transliteration, the alphabet or whatever.
+- For the detection, characters unique to each transliteration scheme.
+- For the scanning, some rules... these can be in code though.
+- For the identification, data about metres.
+- For the display/layout, again metres (this it can take as input). Also, information about metres.
+
+* UX
+
+- User enters (presumed) verse, chooses
+  (a) whether it's a quarter verse (1 pāda), half verse (2 pāda-s), rarely 3 pāda-s, full verse (4 pāda-s), or multiple full verses. (Or "unknown, autodetect")
+  (b) what the input scheme is
+- User sees three boxes:
+  - the original input, with "dropped" (unknown / untransliterated) characters highlighted
+  - our transliterated input, in primary script (Devanagari?)
+  - our transliterated input, in secondary script (IAST)
+- User clicks "OK, recognize this."
+- (to be continued)
+
+# -*- coding: utf-8 -*-
