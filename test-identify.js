@@ -4,6 +4,9 @@ const identify = require('./identify');
 function test() {
   const line = '22221111122122122';
 
+  const verseUnknown = ['112211', '111122', '122111', '121121'];
+  assert.deepEqual(identify(verseUnknown), {});
+
   const versePerfect = [line, line, line, line];
   assert.deepEqual(identify(versePerfect), { exact: 'mandakranta' });
 

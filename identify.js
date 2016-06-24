@@ -27,6 +27,15 @@ function allowLaghuOnEvenLines(lines) {
   return null;
 }
 
+function allowLaghuOnOddLines(lines) {
+  if (lines.length === 4) {
+    if (lines.every((line) => line === '22221111122122122' || line === '22221111122122121')) {
+      return 'mandakranta';
+    }
+  }
+  return null;
+}
+
 function identify(lines) {
   let result = strict(lines);
   if (result && result.length) {
@@ -36,7 +45,11 @@ function identify(lines) {
   if (result && result.length) {
     return { okay: result };
   }
-  return { paadaanta: 'mandakranta' };
+  result = allowLaghuOnOddLines(lines);
+  if (result && result.length) {
+    return { paadaanta: result };
+  }
+  return {};
 }
 
 module.exports = identify;
