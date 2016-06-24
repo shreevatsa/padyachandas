@@ -14,6 +14,22 @@ function test() {
                            [line, lineLaghu, line, lineLaghu]]) {
     assert.deepEqual(identify(verseOkay), { okay: 'mandakranta' });
   }
+
+  // Also the *odd* pAda-s ending in a laghu. The remaining 16 - (1 + 3) cases.
+  for (const verse of [[line, line, lineLaghu, line],
+                       [line, line, lineLaghu, lineLaghu],
+                       [line, lineLaghu, lineLaghu, line],
+                       [line, lineLaghu, lineLaghu, lineLaghu],
+                       [lineLaghu, line, line, line],
+                       [lineLaghu, line, line, lineLaghu],
+                       [lineLaghu, line, lineLaghu, line],
+                       [lineLaghu, line, lineLaghu, lineLaghu],
+                       [lineLaghu, lineLaghu, line, line],
+                       [lineLaghu, lineLaghu, line, lineLaghu],
+                       [lineLaghu, lineLaghu, lineLaghu, line],
+                       [lineLaghu, lineLaghu, lineLaghu, lineLaghu]]) {
+    assert.deepEqual(identify(verse), { paadaanta: 'mandakranta' });
+  }
 }
 
 test();

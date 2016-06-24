@@ -6,15 +6,37 @@ function strict(lines) {
       return 'mandakranta';
     }
   }
-  return [];
+  return null;
+}
+
+function allowLaghuOnEvenLines(lines) {
+  if (lines.length === 4) {
+    let ok = true;
+    for (let i = 0; i < 4; ++i) {
+      if (lines[i] === '22221111122122122') continue;
+      if (i === 1 || i === 3) {
+        if (lines[i] === '22221111122122121') continue;
+      }
+      ok = false;
+      break;
+    }
+    if (ok) {
+      return 'mandakranta';
+    }
+  }
+  return null;
 }
 
 function identify(lines) {
-  const s = strict(lines);
-  if (s.length) {
-    return { exact: s };
+  let result = strict(lines);
+  if (result && result.length) {
+    return { exact: result };
   }
-  return { okay: 'mandakranta' };
+  result = allowLaghuOnEvenLines(lines);
+  if (result && result.length) {
+    return { okay: result };
+  }
+  return { paadaanta: 'mandakranta' };
 }
 
 module.exports = identify;
