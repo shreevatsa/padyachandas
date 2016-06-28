@@ -2,7 +2,7 @@
 
 function strict(lines) {
   if (lines.length === 4) {
-    if (lines.every((line) => line === '22221111122122122')) {
+    if (lines.every(line => line === '22221111122122122')) {
       return 'mandakranta';
     }
   }
@@ -40,7 +40,7 @@ function blobAllowLaghuInEvenPadas(text) {
   const padaLaghu = '22221111122122121';
   if ([pada + pada + pada + padaLaghu,
        pada + padaLaghu + pada + pada,
-       pada + padaLaghu + pada + padaLaghu].some((full) => text === full)) {
+       pada + padaLaghu + pada + padaLaghu].some(full => text === full)) {
     return 'mandakranta';
   }
   return null;
@@ -48,7 +48,7 @@ function blobAllowLaghuInEvenPadas(text) {
 
 function allowLaghuOnOddLines(lines) {
   if (lines.length === 4) {
-    if (lines.every((line) => line === '22221111122122122' || line === '22221111122122121')) {
+    if (lines.every(line => line === '22221111122122122' || line === '22221111122122121')) {
       return 'mandakranta';
     }
   }
@@ -69,7 +69,7 @@ function blobAllowLaghuInOddPadas(text) {
        padaLaghu + padaLaghu + pada + pada,
        padaLaghu + padaLaghu + pada + padaLaghu,
        padaLaghu + padaLaghu + padaLaghu + pada,
-       padaLaghu + padaLaghu + padaLaghu + padaLaghu].some((full) => text === full)) {
+       padaLaghu + padaLaghu + padaLaghu + padaLaghu].some(full => text === full)) {
     return 'mandakranta';
   }
   return null;
