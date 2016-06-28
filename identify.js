@@ -94,18 +94,17 @@ function identify(lines) {
     return { paadaanta: result };
   }
 
-  // TODO: This should probably still take lines, instead of a string.
-  result = blobStrict(lines);
+  result = blobStrict(lines.join(''));
   if (result && result.length) {
     return { blobExact: result };
   }
 
-  result = blobAllowLaghuInEvenPadas(lines);
+  result = blobAllowLaghuInEvenPadas(lines.join(''));
   if (result && result.length) {
     return { blobOkay: result };
   }
 
-  result = blobAllowLaghuInOddPadas(lines);
+  result = blobAllowLaghuInOddPadas(lines.join(''));
   if (result && result.length) {
     return { blobPaadaanta: result };
   }

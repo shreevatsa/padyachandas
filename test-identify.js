@@ -5,7 +5,7 @@ function blobify(lines) {
   if (lines.length !== 4) {
     throw new Error('Give me four lines');
   }
-  return lines[0] + lines[1] + lines[2] + lines[3];
+  return [lines[0] + lines[1] + lines[2] + lines[3]];
 }
 
 function test() {
