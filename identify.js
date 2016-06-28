@@ -9,6 +9,14 @@ function strict(lines) {
   return null;
 }
 
+function blobStrict(text) {
+  const pada = '22221111122122122';
+  if (text === pada.concat(pada).concat(pada).concat(pada)) {
+    return 'mandakranta';
+  }
+  return null;
+}
+
 function allowLaghuOnEvenLines(lines) {
   if (lines.length === 4) {
     let ok = true;
@@ -27,6 +35,17 @@ function allowLaghuOnEvenLines(lines) {
   return null;
 }
 
+function blobAllowLaghuInEvenPadas(text) {
+  const pada = '22221111122122122';
+  const padaLaghu = '22221111122122121';
+  if ([pada + pada + pada + padaLaghu,
+       pada + padaLaghu + pada + pada,
+       pada + padaLaghu + pada + padaLaghu].some((full) => text === full)) {
+    return 'mandakranta';
+  }
+  return null;
+}
+
 function allowLaghuOnOddLines(lines) {
   if (lines.length === 4) {
     if (lines.every((line) => line === '22221111122122122' || line === '22221111122122121')) {
@@ -36,19 +55,61 @@ function allowLaghuOnOddLines(lines) {
   return null;
 }
 
+function blobAllowLaghuInOddPadas(text) {
+  const pada = '22221111122122122';
+  const padaLaghu = '22221111122122121';
+  if ([pada + pada + padaLaghu + pada,
+       pada + pada + padaLaghu + padaLaghu,
+       pada + padaLaghu + padaLaghu + pada,
+       pada + padaLaghu + padaLaghu + padaLaghu,
+       padaLaghu + pada + pada + pada,
+       padaLaghu + pada + pada + padaLaghu,
+       padaLaghu + pada + padaLaghu + pada,
+       padaLaghu + pada + padaLaghu + padaLaghu,
+       padaLaghu + padaLaghu + pada + pada,
+       padaLaghu + padaLaghu + pada + padaLaghu,
+       padaLaghu + padaLaghu + padaLaghu + pada,
+       padaLaghu + padaLaghu + padaLaghu + padaLaghu].some((full) => text === full)) {
+    return 'mandakranta';
+  }
+  return null;
+}
+
+
 function identify(lines) {
-  let result = strict(lines);
+  let result = '';
+
+  result = strict(lines);
   if (result && result.length) {
     return { exact: result };
   }
+
   result = allowLaghuOnEvenLines(lines);
   if (result && result.length) {
     return { okay: result };
   }
+
   result = allowLaghuOnOddLines(lines);
   if (result && result.length) {
     return { paadaanta: result };
   }
+
+  // TODO: This should probably still take lines, instead of a string.
+  result = blobStrict(lines);
+  if (result && result.length) {
+    return { blobExact: result };
+  }
+
+  result = blobAllowLaghuInEvenPadas(lines);
+  if (result && result.length) {
+    return { blobOkay: result };
+  }
+
+  result = blobAllowLaghuInOddPadas(lines);
+  if (result && result.length) {
+    return { blobPaadaanta: result };
+  }
+
   return {};
 }
 
