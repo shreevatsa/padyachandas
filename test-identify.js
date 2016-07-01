@@ -44,6 +44,17 @@ function test() {
     assert.deepStrictEqual(identify(verse), { paadaanta: 'mandakranta' });
     assert.deepStrictEqual(identify(blobify(verse)), { blobPaadaanta: 'mandakranta' });
   }
+
+  // Still to test:
+  // 2 lines
+  // 1 or 3 lines
+  // blob: half a verse
+  // blob: some padas
+  // other metres
+  // matra metres
+  // anushtup shloka
+  // arya, giti
+  // stotra metres: 4-4 4-4 or 3-5 3-5 etc.
 }
 
 test();
