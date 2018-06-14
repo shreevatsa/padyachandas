@@ -1,6 +1,6 @@
 In Sanskrit, poetry is poetry (*kāvya*), regardless of whether it takes the form of prose (*gadya*) or verse (*padya*).[^1] What we speak is by default prose (*gadya*); it becomes *padya* when the sounds fall into certain patterns pleasing to the ear -- when they are regulated according to some system.
 
-Here are some examples:
+There are obviously many ways in which sounds can be striking to the ear, and Sanskrit has a large number of metres.
 
     < Bunch of examples here:
     - Panchachamara, Sragvini, and other such "rhythmic" vRttas
