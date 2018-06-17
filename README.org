@@ -41,12 +41,11 @@ State / data:
 * Development
 
 Code is written in Javascript in as modern a style as possible.
-Using the airbnb style guide (https://github.com/airbnb/javascript) because it seems well-regarded.
 No Babel or transpiling for now; enough to support latest versions of browsers.
 Anyway haven't even got to browser stuff yet.
 
 #+BEGIN_SRC
-node test-*.js && eslint *.js
+node test-*.js
 #+END_SRC
 
 # -*- coding: utf-8 -*-

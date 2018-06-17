@@ -1,3 +1,58 @@
+* Plan
+
+** Goal
+Take this text and do something good with it -- something which is maximally informative to the user:
+#+BEGIN_QUOTE
+“ತಿರುಕನೋರ್ವನೂರ ಮುಂದೆ
+ಮುರುಕು ಧರ್ಮಶಾಲೆಯಲ್ಲಿ
+ಒರಗಿರುತ್ತಲೊಂದು ಕನಸು ಕಂಡನೆಂತೆನೆ”!
+ಪುರದ ರಾಜಸತ್ತನವಗೆ
+ವರಕುಮಾರರಿಲ್ಲದಿರಲು
+ಕರಿಯ ಕೈಗೆ ಕುಸುಮಮಾಲೆಯಿತ್ತು ಪುರದೊಳು
+
+api ca:
+
+pāṇi-grahe pulakitaṃ vapur aiśaṃ bhūti-bhūṣitaṃ jayati |
+aṅkurita iva mano-bhūr yasmin bhasmāvaśeṣo 'pi ||GAss_*1||
+
+GG-LGL-LLG / LLG-GG-LGL-GLL-L //
+GLL-LLLL-GG / GG-GG-L-GG-L
+
+इत्थं वृषाचलपतेरिह सुप्रभातम्
+ये मानवाः प्रतिदिनं पठितुं प्रवृत्ताः ।
+तेषां प्रभातसमये स्मृतिरङ्गभाजां
+प्रज्ञां परार्थसुलभां परमां प्रसूते ॥ २९॥
+
+ ॥ iti veṅkaṭeśasuprabhātam ॥
+
+ ॥ atha veṅkaṭeśastotram ॥
+
+kamalākucacūcukakuṅkumato
+niyatāruṇitātulanīlatano ।
+kamalāyatalocana lokapate
+vijayī bhava veṅkaṭaśailapate ॥ 1॥
+#+END_QUOTE
+
+There are a bunch of challenges here:
+- recognizing breaks between verses
+- transliteration, while keeping the punctuation
+
+** Components
+
+Text -> Break into verses -> turn into a sequence of [non-sounds | {scanned syllables}]
+These {scanned syllables} result in a scansion like GGLGLLLG....
+Look for patterns in them.
+Check against vṛttas.
+Know the pattern (even if one hasn't been recorded).
+*Show* the most likely patterns (in order of likelihood).
+Show all the names for each pattern/metre (if recorded, per source).
+
+** Options
+
+- User input and output transliterations (primary and secondary)
+- How to indicate chandas (L/G, 1/2, na/nA, la/gam, ।/ऽ, ˘/–)
+
+
 * Other efforts
 
 https://github.com/ramprax/sanskrit-chandas-ganas
