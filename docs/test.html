@@ -1,0 +1,138 @@
+<html>
+<style>
+.wrapperForCentering {
+  max-width: 70em;
+  display: grid;
+  justify-content: center;
+}
+
+.original {
+    white-space: pre-wrap; /* Means preserve spaces and line-breaks, but allow wrapping (additional line breaks) instead of overfull boxes. */
+    margin: 0 auto;
+}
+.scansion {
+    white-space: pre-wrap; /* Means preserve spaces and line-breaks, but allow wrapping (additional line breaks) instead of overfull boxes. */
+}
+.L {
+    display: inline-grid;
+    font-weight: lighter;
+    color: blue;
+
+}
+.G {
+    display: inline-grid;
+    color: darkred;
+    font-weight: bolder;
+}
+/*
+.L:nth-child(odd), .G:nth-child(odd) {
+    background: #CCC
+}
+.L:nth-child(even), .G:nth-child(even) {
+    background: #CCC
+}
+*/
+.syl {
+    grid-row: 1;
+    font-size: 150%;
+}
+.scan {
+    grid-row: 2;
+    text-align: center;
+}
+</style>
+<body>
+<script>
+// Before: a node like "<s-l text=ti></s-l>" or "<s-g text=ve></s-g>"
+// After:  a node like "<s-l class=L><span style=syl>ti</span><span style=scan>L</span></s-l>"
+//                OR   "<s-g class=G><span style=syl>ve</span><span style=scan>G</span></s-l>" 
+function replaceSyllable(node, weight) {
+    var top = document.createElement('span');
+    top.setAttribute('class', 'syl');
+    top.textContent = node.getAttribute('text') || node.textContent;
+    node.textContent = '';
+    var bot = document.createElement('span');
+    bot.setAttribute('class', 'scan');
+    bot.textContent = weight;
+    node.className = weight;
+    node.appendChild(top);
+    node.appendChild(bot);
+}
+
+class SyllableLaghu extends HTMLElement {
+    constructor() {
+        super();
+    }
+    connectedCallback() {
+        replaceSyllable(this, 'L');
+    }
+}
+customElements.define("s-l", SyllableLaghu);
+
+class SyllableGuru extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+      replaceSyllable(this, 'G');
+  }
+}
+customElements.define("s-g", SyllableGuru);
+</script>
+Your input:
+
+<div class=wrapperForCentering>
+<div class=original>
+  ativēlatayā tava durviṣahair
+  anuvēlakṛtairaparādhaśataiḥ|
+  bharitaṃ tvaritaṃ vṛṣaśailapatē
+  parayā kṛpayā paripāhi harē||3||
+</div>
+</div>
+
+<div class=wrapperForCentering>
+<div class=scansion>
+  <span class=L>a</span><span class=L>ti</span><div class=G><span class="syl">vē</span><span class="scan">G</scan></div><span class=L>la</span><span class=L>ta</span><span class=G>yā</span> <span class=L>ta</span><span class=L>va</span> <span class=G>dur</span><span class=L>vi</span><span class=L>ṣa</span><span class=G>hair</span>
+  anuvēlakṛtairaparādhaśataiḥ|
+  bharitaṃ tvaritaṃ vṛṣaśailapatē
+  parayā kṛpayā paripāhi harē||3||
+</div>
+</div>
+
+<div class=wrapperForCentering>
+<div class=scansion>
+  <s-l text="a"></s-l><s-l text="ti"></s-l><s-g text="ve"></s-g><s-l text="la"></s-l><s-l text="ta"></s-l><s-g text="yā"></s-g> <s-l text="ta"></s-l><s-l text="va"></s-l> <s-g text="dur"></s-g><s-l text="vi"></s-l><s-l text="ṣa"></s-l><s-g text="hair"></s-g>
+  <span id=line2></span>
+  bharitaṃ tvaritaṃ vṛṣaśailapatē
+  parayā kṛpayā paripāhi harē||3||
+</div>
+</div>
+
+<div id="testing123">ve</div>
+
+<script>
+  replaceSyllable(document.getElementById('testing123'), 'G');
+  var tmp;
+  var list = document.createElement('span');
+  tmp = document.createElement('s-l'); tmp.setAttribute('text', 'a'); list.appendChild(tmp);
+  tmp = document.createElement('s-l'); tmp.setAttribute('text', 'nu'); list.appendChild(tmp);
+  tmp = document.createElement('s-g'); tmp.setAttribute('text', 'vē'); list.appendChild(tmp);
+  tmp = document.createElement('s-l'); tmp.setAttribute('text', 'la'); list.appendChild(tmp);
+  tmp = document.createElement('s-l'); tmp.setAttribute('text', 'kṛ'); list.appendChild(tmp);
+  tmp = document.createElement('s-g'); tmp.setAttribute('text', 'tair'); list.appendChild(tmp);
+  tmp = document.createElement('s-l'); tmp.setAttribute('text', 'a'); list.appendChild(tmp);
+  tmp = document.createElement('s-l'); tmp.setAttribute('text', 'pa'); list.appendChild(tmp);
+  tmp = document.createElement('s-g'); tmp.setAttribute('text', 'rā'); list.appendChild(tmp);
+  tmp = document.createElement('s-l'); tmp.setAttribute('text', 'dha'); list.appendChild(tmp);
+  tmp = document.createElement('s-l'); tmp.setAttribute('text', 'śa'); list.appendChild(tmp);
+  tmp = document.createElement('s-g'); tmp.setAttribute('text', 'taiḥ'); list.appendChild(tmp);
+  let toReplace = document.getElementById('line2');
+  toReplace.parentNode.replaceChild(list, toReplace);
+</script>
+</body>
+<!--
+Some random reading on CSS:
+https://medium.com/flexbox-and-grids/css-flexbox-grid-layout-how-to-approach-css-layouts-in-2017-and-beyond-685deef03e6c
+
+-->
+</html>
