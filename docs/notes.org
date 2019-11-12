@@ -27,11 +27,12 @@ GLL-LLLL-GG / GG-GG-L-GG-L
 
  ॥ atha veṅkaṭeśastotram ॥
 
-kamalākucacūcukakuṅkumato
-niyatāruṇitātulanīlatano ।
-kamalāyatalocana lokapate
-vijayī bhava veṅkaṭaśailapate ॥ 1॥
+ativelatayā tava durviṣahaiḥ
+anuvelakṛtairaparādhaśataiḥ ।
+bharitaṃ tvaritaṃ vṛṣaśailapate
+parayā kṛpayā paripāhi hare ॥ 3॥
 #+END_QUOTE
+(some from https://sanskritdocuments.org/doc_vishhnu/venkatsp.html)
 
 There are a bunch of challenges here:
 - recognizing breaks between verses

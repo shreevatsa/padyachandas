@@ -1,7 +1,10 @@
 <html>
 <style>
+body {
+  font-size: 150%;
+}
+
 .wrapperForCentering {
-  max-width: 70em;
   display: grid;
   justify-content: center;
 }
@@ -10,34 +13,41 @@
     white-space: pre-wrap; /* Means preserve spaces and line-breaks, but allow wrapping (additional line breaks) instead of overfull boxes. */
     margin: 0 auto;
 }
-.scansion {
+.scansion, .scansion2 {
     white-space: pre-wrap; /* Means preserve spaces and line-breaks, but allow wrapping (additional line breaks) instead of overfull boxes. */
 }
-.L {
-    display: inline-grid;
-    font-weight: lighter;
-    color: blue;
 
+.scansion {
+    word-spacing: 0.5em;
+    width: 200%;
 }
-.G {
-    display: inline-grid;
+
+.L, .G {
+    display: inline-grid; 
+    border-width: 1px;
+    border-style: ridge;
+    border-color: #fff;
+}
+
+.scansion2 .L {
+    color: blue;
+    font-weight: lighter;
+}
+.scansion2 .G {
     color: darkred;
     font-weight: bolder;
 }
-/*
-.L:nth-child(odd), .G:nth-child(odd) {
-    background: #CCC
+
+.scansion2 .L, .scansion2 .G {
+    background: #CCC;
 }
-.L:nth-child(even), .G:nth-child(even) {
-    background: #CCC
-}
-*/
+
 .syl {
-    grid-row: 1;
-    font-size: 150%;
+    grid-row: 2;
+    font-size: larger;
 }
 .scan {
-    grid-row: 2;
+    grid-row: 1;
     text-align: center;
 }
 </style>
@@ -108,6 +118,15 @@ Your input:
 </div>
 </div>
 
+<div class=wrapperForCentering>
+<div class=scansion2>
+  <s-l text="a"></s-l><s-l text="ti"></s-l><s-g text="ve"></s-g><s-l text="la"></s-l><s-l text="ta"></s-l><s-g text="yā"></s-g> <s-l text="ta"></s-l><s-l text="va"></s-l> <s-g text="dur"></s-g><s-l text="vi"></s-l><s-l text="ṣa"></s-l><s-g text="hair"></s-g>
+  <span id=line22></span>
+  bharitaṃ tvaritaṃ vṛṣaśailapatē
+  parayā kṛpayā paripāhi harē||3||
+</div>
+</div>
+
 <div id="testing123">ve</div>
 
 <script>
@@ -126,8 +145,12 @@ Your input:
   tmp = document.createElement('s-l'); tmp.setAttribute('text', 'dha'); list.appendChild(tmp);
   tmp = document.createElement('s-l'); tmp.setAttribute('text', 'śa'); list.appendChild(tmp);
   tmp = document.createElement('s-g'); tmp.setAttribute('text', 'taiḥ'); list.appendChild(tmp);
+
   let toReplace = document.getElementById('line2');
   toReplace.parentNode.replaceChild(list, toReplace);
+
+  toReplace = document.getElementById('line22');
+  toReplace.parentNode.replaceChild(list.cloneNode(true), toReplace);
 </script>
 </body>
 <!--
